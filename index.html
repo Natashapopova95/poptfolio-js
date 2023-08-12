@@ -385,7 +385,7 @@
                 </ul>
               </div>
             </div>
-            <form action="#" id="forms" class="form">
+            <form action="check_post.php" method="post" id="forms" class="form">
               <div class="form__item">
                 <label for="formName" class="form__ladel">Ф.И.О.*</label>
                 <input
@@ -393,7 +393,7 @@
                   type="text"
                   id="formName"
                   class="form__input"
-                  name="name"
+                  name="username"
                   placeholder="Укажите ваши Ф.И.О."
                 />
               </div>
@@ -404,7 +404,7 @@
                   type="tel"
                   id="formPhone"
                   class="form__input"
-                  name="name"
+                  name="message"
                   placeholder="Укажите ваш телефон"
                 />
               </div>
@@ -415,11 +415,20 @@
                   type="email"
                   id="formEmail"
                   class="form__input"
-                  name="name"
+                  name="email"
                   placeholder="Укажите ваши E-mail"
                 />
               </div>
-              <button class="link" type="submit">Отправить заявку</button>
+              <input type="submit" class="link" type="submit" value="Отправить заявку"></input>
+            </form>
+
+
+            <form action="check_post.php" method="post">
+              <input type="text" name="username" placeholder="Введите имя" class="form-control mb-4">
+              <input type="email" name="email" placeholder="Введите email" class="form-control mb-4">
+              <input type="password" name="password" placeholder="Введите пароль" class="form-control mb-4">
+              <textarea name="message" class="form-control mb-4" placeholder="Введите сообщение"></textarea><br>
+              <input type="submit" value="Отправить" class="btn btn-success">
             </form>
           </div>
         </div>
