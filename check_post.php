@@ -2,7 +2,7 @@
 $name = $_POST['username'];
 $email = $_POST['email'];
 $password = $_POST['password'];
-$to = "nat4shail@yandex.ru";
+
 
 if (trim($name) == "") 
   echo "Вы не ввели имя пользователя";
@@ -18,7 +18,7 @@ else {
 }
 
 
-if (mail($to, "Заказ с сайта", "ФИО:".$name.". E-mail: ".$email))
+if (mail("nat4shail@yandex.ru", "Заказ с сайта", "ФИО:".$name.". E-mail: ".$email))
  {
     echo "сообщение успешно отправлено";
 } else {
