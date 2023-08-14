@@ -305,49 +305,33 @@
             </div>
             <input type="submit" class="link" value="Отправить заявку"></input>
           </form>
-          <?php
-$urok="заявка";
-error_reporting( E_ERROR );   //Отключение предупреждений и нотайсов (warning и notice) на сайте
-// создание переменных из полей формы
-if (isset($_POST['name']))			{$name			= $_POST['name'];		if ($name == '')	{unset($name);}}
-if (isset($_POST['email']))		{$email		= $_POST['email'];		if ($email == '')	{unset($email);}}
-if (isset($_POST['text']))			{$text			= $_POST['text'];		if ($text == '')	{unset($text);}}
-if (isset($_POST['sab']))			{$sab			= $_POST['sab'];		if ($sab == '')		{unset($sab);}}
-if (isset($_POST['color1']))		{$color1		= $_POST['color1'];		if ($color1 == '')	{unset($color1);}}
-if (isset($_POST['a1']))			{$a1			= $_POST['a1'];		if ($a1 == '')		{unset($a1);}}
-//стирание треугольных скобок из полей формы
-/* комментарий */
-if (isset($name) ) {
-    $name=stripslashes($name);
-    $name=htmlspecialchars($name);
-}
-if (isset($email) ) {
-    $email=stripslashes($email);
-    $email=htmlspecialchars($email);
-}
-if (isset($text) ) {
-    $text=stripslashes($text);
-    $text=htmlspecialchars($text);
-}
-// адрес почты куда придет письмо
-$address="nat4shail@yandex.ru";
-// текст письма
-$note_text=" 
-Тема : $urok \r\n
-Имя : $name \r\n
-Email : $email \r\n
-Цвет :  $color1 \r\n
-Статус : $a1
-Дополнительная информация : $text";
+          <?php 
+$name = $_POST['username'];
+$email = $_POST['email'];
+$password = $_POST['password'];
 
-if (isset($name)  &&  isset ($sab) ) {
-    mail($address,$urok,$note_text,"Content-type:text/plain; windows-1251");
-// сообщение после отправки формы
 
-    echo "<p style='color:green;'>Уважаемый(ая) <b style='color:red;'>$name</b> Ваше письмо отправленно успешно. <br> Спасибо. <br>Вам скоро ответят на почту <b style='color:red;'> $email</b>.</p>";
+if (trim($name) == "") 
+  echo "Вы не ввели имя пользователя";
+else if(strlen(trim($name)) <= 1)
+  echo "Такого имени не существует";
+else if(trim($email) == "" || trim($password) == "" || "" || trim($_POST["message"]) == "")
+  echo "Введите все двнные";
+else {
+  $_POST['password'] = md5($password);
+  echo "<h1>Все данные</h1>";
+  foreach ($_POST as $key => $value) 
+    echo "<p>$value</p>";
+}
+
+
+if (mail("nat4shail@yandex.ru", "Заказ с сайта", "ФИО:".$name.". E-mail: ".$email))
+ {
+    echo "сообщение успешно отправлено";
+} else {
+    echo "при отправке сообщения возникли ошибки";
 }
 ?>
-
         </div>
       </div>
     </section>
