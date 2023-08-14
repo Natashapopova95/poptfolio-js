@@ -17,7 +17,7 @@
 </head>
 
 <body>
-  <form action="index.php" method="post" id="forms" target="_blank" id="forms" class="form">
+  <form method="post" id="forms" target="_blank" id="forms" class="form">
     <div class="form__item">
       <label for="formName" class="form__ladel">Ф.И.О.*</label>
       <input required type="text" id="formName" class="form__input" name="username" placeholder="Укажите ваши Ф.И.О." />
